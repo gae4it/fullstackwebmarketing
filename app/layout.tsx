@@ -16,9 +16,17 @@ export const metadata = {
     default: SITE_NAME!,
     template: `%s | ${SITE_NAME}`,
   },
+  description:
+    "Educational project - Not for commercial use. Deployed on Vercel, Next.js Commerce and Shopify Partners.",
   robots: {
-    follow: true,
-    index: true,
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
   },
 };
 
