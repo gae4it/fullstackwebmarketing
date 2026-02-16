@@ -60,7 +60,7 @@ export default async function ProductPage(props: {
     "@type": "Product",
     name: product.title,
     description: product.description,
-    image: product.featuredImage.url,
+    image: product.featuredImage?.url || "https://via.placeholder.com/500",
     offers: {
       "@type": "AggregateOffer",
       availability: product.availableForSale

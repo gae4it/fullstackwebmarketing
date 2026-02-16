@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 export function FooterMenuItem({ item }: { item: Menu }) {
   const pathname = usePathname();
-  const [active, setActive] = useState(pathname === item.path);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     setActive(pathname === item.path);
