@@ -13,8 +13,8 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function addItem(
-  prevState: any,
-  selectedVariantId: string | undefined
+  _prevState: string | null,
+  selectedVariantId: string | undefined,
 ) {
   if (!selectedVariantId) {
     return "Error adding item to cart";
@@ -23,12 +23,15 @@ export async function addItem(
   try {
     await addToCart([{ merchandiseId: selectedVariantId, quantity: 1 }]);
     updateTag(TAGS.cart);
-  } catch (e) {
+  } catch {
     return "Error adding item to cart";
   }
 }
 
-export async function removeItem(prevState: any, merchandiseId: string) {
+export async function removeItem(
+  _prevState: string | null,
+  merchandiseId: string,
+) {
   try {
     const cart = await getCart();
 
@@ -37,7 +40,7 @@ export async function removeItem(prevState: any, merchandiseId: string) {
     }
 
     const lineItem = cart.lines.find(
-      (line) => line.merchandise.id === merchandiseId
+      (line) => line.merchandise.id === merchandiseId,
     );
 
     if (lineItem && lineItem.id) {
@@ -46,17 +49,17 @@ export async function removeItem(prevState: any, merchandiseId: string) {
     } else {
       return "Item not found in cart";
     }
-  } catch (e) {
+  } catch {
     return "Error removing item from cart";
   }
 }
 
 export async function updateItemQuantity(
-  prevState: any,
+  _prevState: string | null,
   payload: {
     merchandiseId: string;
     quantity: number;
-  }
+  },
 ) {
   const { merchandiseId, quantity } = payload;
 
@@ -68,7 +71,7 @@ export async function updateItemQuantity(
     }
 
     const lineItem = cart.lines.find(
-      (line) => line.merchandise.id === merchandiseId
+      (line) => line.merchandise.id === merchandiseId,
     );
 
     if (lineItem && lineItem.id) {
@@ -89,18 +92,18 @@ export async function updateItemQuantity(
     }
 
     updateTag(TAGS.cart);
-  } catch (e) {
-    console.error(e);
+  } catch (error: unknown) {
+    console.error(error);
     return "Error updating item quantity";
   }
 }
 
 export async function redirectToCheckout() {
-  let cart = await getCart();
+  const cart = await getCart();
   redirect(cart!.checkoutUrl);
 }
 
 export async function createCartAndSetCookie() {
-  let cart = await createCart();
+  const cart = await createCart();
   (await cookies()).set("cartId", cart.id!);
 }

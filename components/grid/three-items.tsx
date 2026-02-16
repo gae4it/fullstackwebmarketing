@@ -46,9 +46,12 @@ function ThreeItemGridItem({
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-800">
             <div className="text-center px-4">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{item.title}</h3>
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                {item.title}
+              </h3>
               <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                {item.priceRange.maxVariantPrice.currencyCode} {item.priceRange.maxVariantPrice.amount}
+                {item.priceRange.maxVariantPrice.currencyCode}{" "}
+                {item.priceRange.maxVariantPrice.amount}
               </p>
             </div>
           </div>

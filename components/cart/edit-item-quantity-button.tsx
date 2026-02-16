@@ -6,6 +6,10 @@ import { updateItemQuantity } from "components/cart/actions";
 import type { CartItem } from "lib/shopify/types";
 import { useActionState } from "react";
 
+type UpdateType = "plus" | "minus" | "delete";
+
+type OptimisticUpdate = (merchandiseId: string, updateType: UpdateType) => void;
+
 function SubmitButton({ type }: { type: "plus" | "minus" }) {
   return (
     <button
@@ -36,7 +40,7 @@ export function EditItemQuantityButton({
 }: {
   item: CartItem;
   type: "plus" | "minus";
-  optimisticUpdate: any;
+  optimisticUpdate: OptimisticUpdate;
 }) {
   const [message, formAction] = useActionState(updateItemQuantity, null);
   const payload = {

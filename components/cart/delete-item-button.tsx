@@ -5,12 +5,17 @@ import { removeItem } from "components/cart/actions";
 import type { CartItem } from "lib/shopify/types";
 import { useActionState } from "react";
 
+type OptimisticUpdate = (
+  merchandiseId: string,
+  updateType: "plus" | "minus" | "delete",
+) => void;
+
 export function DeleteItemButton({
   item,
   optimisticUpdate,
 }: {
   item: CartItem;
-  optimisticUpdate: any;
+  optimisticUpdate: OptimisticUpdate;
 }) {
   const [message, formAction] = useActionState(removeItem, null);
   const merchandiseId = item.merchandise.id;

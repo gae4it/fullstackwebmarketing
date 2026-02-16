@@ -56,46 +56,71 @@ export default async function Footer() {
       </div>
       <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
         <div className="mx-auto w-full max-w-7xl px-4 md:px-4 min-[1320px]:px-0">
-          
           {/* Legal Links */}
           <div className="mb-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs">
-            <Link href="/privacy" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/privacy"
+              className="hover:text-black dark:hover:text-white"
+            >
               Privacy Policy
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/terms" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/terms"
+              className="hover:text-black dark:hover:text-white"
+            >
               Terms of Service
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/disclaimer" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/disclaimer"
+              className="hover:text-black dark:hover:text-white"
+            >
               Disclaimer
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/shipping" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/shipping"
+              className="hover:text-black dark:hover:text-white"
+            >
               Shipping Policy
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/returns" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/returns"
+              className="hover:text-black dark:hover:text-white"
+            >
               Returns & Refunds
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/cookies" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/cookies"
+              className="hover:text-black dark:hover:text-white"
+            >
               Cookie Policy
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/acceptable-use" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/acceptable-use"
+              className="hover:text-black dark:hover:text-white"
+            >
               Acceptable Use
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/contact" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/contact"
+              className="hover:text-black dark:hover:text-white"
+            >
               Contact
             </Link>
             <span className="text-neutral-300 dark:text-neutral-600">·</span>
-            <Link href="/about" className="hover:text-black dark:hover:text-white">
+            <Link
+              href="/about"
+              className="hover:text-black dark:hover:text-white"
+            >
               About
             </Link>
           </div>
-
 
           {/* Copyright */}
           <div className="flex flex-col justify-center items-center gap-1 md:flex-row md:gap-0">
