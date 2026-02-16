@@ -26,6 +26,7 @@ export async function generateMetadata(props: {
 export default async function Page(props: {
   params: Promise<{ page: string }>;
 }) {
+  "use cache";
   const params = await props.params;
   const page = await getPage(params.page);
 
