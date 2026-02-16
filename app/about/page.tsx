@@ -1,4 +1,5 @@
 import Footer from "components/layout/footer";
+import { headers } from "next/headers";
 import Link from "next/link";
 
 export const metadata = {
@@ -7,6 +8,7 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  headers(); // Opt out of static prerendering to allow dynamic date
   return (
     <>
       <div className="mx-auto max-w-2xl px-4 py-12">
@@ -14,7 +16,7 @@ export default function AboutPage() {
 
         <div className="prose prose-sm dark:prose-invert max-w-none space-y-6">
           <section className="bg-blue-50 dark:bg-blue-950 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
-            <h2 className="text-2xl font-bold mb-4 text-blue-900 dark:text-blue-100">
+            <h2 className="text-2xl font-bold mt-4 mb-4 text-blue-900 dark:text-blue-100">
               📚 Educational Demonstration
             </h2>
             <p className="text-blue-800 dark:text-blue-200">

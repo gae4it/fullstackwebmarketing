@@ -5,5 +5,9 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
+  },
+  "workbench.editor.customLabels.patterns": {
+    "**/**.ts": "${dirname}/${filename}",
+    "**/**.tsx": "${dirname}/${filename}"
   }
 }
