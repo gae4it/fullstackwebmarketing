@@ -5,7 +5,7 @@
   "editor.formatOnSave": true,
   "eslint.format.enable": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
   },

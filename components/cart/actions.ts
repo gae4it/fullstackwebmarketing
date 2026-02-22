@@ -13,7 +13,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function addItem(
-  _prevState: string | null,
+  _prevState: string | null | undefined,
   selectedVariantId: string | undefined,
 ) {
   if (!selectedVariantId) {
@@ -29,7 +29,7 @@ export async function addItem(
 }
 
 export async function removeItem(
-  _prevState: string | null,
+  _prevState: string | null | undefined,
   merchandiseId: string,
 ) {
   try {
@@ -55,7 +55,7 @@ export async function removeItem(
 }
 
 export async function updateItemQuantity(
-  _prevState: string | null,
+  _prevState: string | null | undefined,
   payload: {
     merchandiseId: string;
     quantity: number;

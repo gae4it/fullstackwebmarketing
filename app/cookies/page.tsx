@@ -106,7 +106,7 @@ export default function CookiePolicyPage() {
 
           <section>
             <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              Last updated: {new Date().toLocaleDateString()}
+              Last updated: February 22, 2026
             </p>
           </section>
         </div>
