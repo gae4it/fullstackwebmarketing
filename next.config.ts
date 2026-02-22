@@ -12,6 +12,21 @@ export default {
         hostname: "cdn.shopify.com",
         pathname: "/s/files/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/photo-**",
+      },
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "source.unsplash.com",
+        pathname: "/featured/**",
+      },
     ],
   },
 };

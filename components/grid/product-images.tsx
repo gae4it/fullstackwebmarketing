@@ -1,4 +1,5 @@
 import { GridTileImage } from "components/grid/tile";
+import { resolveProductImage } from "lib/product-images";
 import { getCollectionProducts } from "lib/shopify";
 import type { Product } from "lib/shopify/types";
 import Link from "next/link";
@@ -12,6 +13,8 @@ function ThreeItemGridItem({
   size: "full" | "half";
   priority?: boolean;
 }) {
+  const imageSrc = resolveProductImage(item);
+
   return (
     <div
       className={
@@ -25,37 +28,23 @@ function ThreeItemGridItem({
         href={`/product/${item.handle}`}
         prefetch={true}
       >
-        {item.featuredImage ? (
-          <GridTileImage
-            src={item.featuredImage.url}
-            fill
-            sizes={
-              size === "full"
-                ? "(min-width: 768px) 66vw, 100vw"
-                : "(min-width: 768px) 33vw, 100vw"
-            }
-            priority={priority}
-            alt={item.title}
-            label={{
-              position: size === "full" ? "center" : "bottom",
-              title: item.title as string,
-              amount: item.priceRange.maxVariantPrice.amount,
-              currencyCode: item.priceRange.maxVariantPrice.currencyCode,
-            }}
-          />
-        ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-800">
-            <div className="text-center px-4">
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                {item.priceRange.maxVariantPrice.currencyCode}{" "}
-                {item.priceRange.maxVariantPrice.amount}
-              </p>
-            </div>
-          </div>
-        )}
+        <GridTileImage
+          src={imageSrc}
+          fill
+          sizes={
+            size === "full"
+              ? "(min-width: 768px) 66vw, 100vw"
+              : "(min-width: 768px) 33vw, 100vw"
+          }
+          priority={priority}
+          alt={item.title}
+          label={{
+            position: size === "full" ? "center" : "bottom",
+            title: item.title as string,
+            amount: item.priceRange.maxVariantPrice.amount,
+            currencyCode: item.priceRange.maxVariantPrice.currencyCode,
+          }}
+        />
       </Link>
     </div>
   );

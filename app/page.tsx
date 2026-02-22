@@ -1,10 +1,10 @@
 import { PluginsGrid } from "components/grid/plugins-grid";
-import { ThreeItemGrid } from "components/grid/three-items";
+import { ThreeItemGrid } from "components/grid/product-images";
 import Footer from "components/layout/footer";
 
 export const metadata = {
   description:
-    "Full Stack Web Marketing - Educational project demo. Deployed on Vercel, Next.js Commerce, and Shopify Partners.",
+    "Web Marketing Shop - Educational project demo. Deployed on Vercel, Next.js Commerce, and Shopify Partners.",
   robots: "noindex, nofollow",
   openGraph: {
     type: "website",

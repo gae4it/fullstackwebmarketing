@@ -1,5 +1,6 @@
 "use cache";
 
+import { resolveProductImage } from "lib/product-images";
 import { getCollectionProducts } from "lib/shopify";
 import type { Product } from "lib/shopify/types";
 import Link from "next/link";
@@ -30,17 +31,14 @@ export async function PluginsGrid() {
               href={`/product/${product.handle}`}
               className="group relative aspect-square overflow-hidden rounded-lg border border-neutral-200 bg-white p-4 hover:shadow-lg transition dark:border-neutral-800 dark:bg-neutral-900"
             >
-              {product.featuredImage ? (
-                <div className="relative h-full w-full">
-                  <img
-                    src={product.featuredImage.url}
-                    alt={product.featuredImage.altText || product.title}
-                    className="h-full w-full object-cover group-hover:scale-105 transition"
-                  />
-                </div>
-              ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-800">
-                  <div className="text-center">
+              <div className="relative h-full w-full">
+                <img
+                  src={resolveProductImage(product)}
+                  alt={product.featuredImage?.altText || product.title}
+                  className="h-full w-full object-cover group-hover:scale-105 transition"
+                />
+                <div className="absolute bottom-0 left-0 flex w-full px-4 pb-4 @container/label">
+                  <div className="w-full rounded-lg bg-white/80 p-2 text-center shadow-md dark:bg-black/80">
                     <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 line-clamp-2">
                       {product.title}
                     </h3>
@@ -50,7 +48,7 @@ export async function PluginsGrid() {
                     </p>
                   </div>
                 </div>
-              )}
+              </div>
               <div className="absolute inset-0 rounded-lg bg-black/0 group-hover:bg-black/10 transition" />
             </Link>
           ))}

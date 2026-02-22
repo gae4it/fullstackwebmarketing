@@ -3,6 +3,7 @@ import Footer from "components/layout/footer";
 import { Gallery } from "components/product/gallery";
 import { ProductDescription } from "components/product/product-description";
 import { HIDDEN_PRODUCT_TAG } from "lib/constants";
+import { resolveProductImage } from "lib/product-images";
 import { getProduct, getProductRecommendations } from "lib/shopify";
 import type { Image } from "lib/shopify/types";
 import type { Metadata } from "next";
@@ -60,7 +61,7 @@ export default async function ProductPage(props: {
     "@type": "Product",
     name: product.title,
     description: product.description,
-    image: product.featuredImage?.url || "https://via.placeholder.com/500",
+    image: resolveProductImage(product),
     offers: {
       "@type": "AggregateOffer",
       availability: product.availableForSale
@@ -90,7 +91,7 @@ export default async function ProductPage(props: {
             >
               <Gallery
                 images={product.images.slice(0, 5).map((image: Image) => ({
-                  src: image.url,
+                  src: resolveProductImage(product),
                   altText: image.altText,
                 }))}
               />
@@ -136,7 +137,7 @@ async function RelatedProducts({ id }: { id: string }) {
                   amount: product.priceRange.maxVariantPrice.amount,
                   currencyCode: product.priceRange.maxVariantPrice.currencyCode,
                 }}
-                src={product.featuredImage?.url}
+                src={resolveProductImage(product)}
                 fill
                 sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
               />
